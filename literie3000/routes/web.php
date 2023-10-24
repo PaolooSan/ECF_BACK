@@ -18,3 +18,6 @@ Route::get('/', function () {
 });
 
 Route::resource('/products', ProductController::class);
+// Route::patch('/products/editedprice/{id}', [ProductController::class, 'update']);
+// Route::delete('/products/deletedproduct/{id}', [ProductController::class, 'destroy']);
+Route::get('/products/{id}/dimensions', [ProductController::class, 'show']);

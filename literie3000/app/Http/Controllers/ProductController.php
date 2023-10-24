@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Dimension;
 
 class ProductController extends Controller
 {
@@ -66,7 +67,9 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $dimensions = $product->dimensions()->with('product')->get();
+        return $dimensions;
     }
 
     /**
