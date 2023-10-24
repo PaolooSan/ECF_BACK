@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -11,7 +12,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return $products;
     }
 
     /**
@@ -27,7 +29,36 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product;
+        $product->image = "https://picsum.photos/200/300";
+        $product->brand = "EPEDA";
+        $product->name = "Matelas Brigitte";
+        $product->price = 759.00;
+        $product->save();
+
+        $product = new Product;
+        $product->image = "https://picsum.photos/200/300";
+        $product->brand = "DREAMWAY";
+        $product->name = "Matelas Marine";
+        $product->price = 809.00;
+        $product->save();
+
+        $product = new Product;
+        $product->image = "https://picsum.photos/200/300";
+        $product->brand = "BULTEX";
+        $product->name = "Matelas Positive Attitude";
+        $product->price = 529.00;
+        $product->save();
+
+        $product = new Product;
+        $product->image = "https://picsum.photos/200/300";
+        $product->brand = "EPEDA";
+        $product->name = "Matelas Buro Club";
+        $product->price = 1019.00;
+        $product->save();
+
+        return $product;
+
     }
 
     /**
