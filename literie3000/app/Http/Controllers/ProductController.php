@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RequestCreateProduct;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\Dimension;
 
 class ProductController extends Controller
 {
@@ -22,43 +22,47 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RequestCreateProduct $request)
     {
-        $product = new Product;
-        $product->image = "https://picsum.photos/200/300";
-        $product->brand = "EPEDA";
-        $product->name = "Matelas Brigitte";
-        $product->price = 759.00;
+        // $product = new Product;
+        // $product->image = "https://picsum.photos/200/300";
+        // $product->brand = "EPEDA";
+        // $product->name = "Matelas Brigitte";
+        // $product->price = 759.00;
+        // $product->save();
+
+        // $product = new Product;
+        // $product->image = "https://picsum.photos/200/300";
+        // $product->brand = "DREAMWAY";
+        // $product->name = "Matelas Marine";
+        // $product->price = 809.00;
+        // $product->save();
+
+        // $product = new Product;
+        // $product->image = "https://picsum.photos/200/300";
+        // $product->brand = "BULTEX";
+        // $product->name = "Matelas Positive Attitude";
+        // $product->price = 529.00;
+        // $product->save();
+
+        // $product = new Product;
+        // $product->image = "https://picsum.photos/200/300";
+        // $product->brand = "EPEDA";
+        // $product->name = "Matelas Buro Club";
+        // $product->price = 1019.00;
+        // $product->save();
+
+        $product = new Product ($request->all());
         $product->save();
 
-        $product = new Product;
-        $product->image = "https://picsum.photos/200/300";
-        $product->brand = "DREAMWAY";
-        $product->name = "Matelas Marine";
-        $product->price = 809.00;
-        $product->save();
+        return redirect()->route('products.show');
 
-        $product = new Product;
-        $product->image = "https://picsum.photos/200/300";
-        $product->brand = "BULTEX";
-        $product->name = "Matelas Positive Attitude";
-        $product->price = 529.00;
-        $product->save();
-
-        $product = new Product;
-        $product->image = "https://picsum.photos/200/300";
-        $product->brand = "EPEDA";
-        $product->name = "Matelas Buro Club";
-        $product->price = 1019.00;
-        $product->save();
-
-        return $product;
 
     }
 
@@ -85,7 +89,11 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->price = 30000;
+        $product->save();
+
+        return $product;
     }
 
     /**
@@ -93,6 +101,9 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return $product;
     }
 }

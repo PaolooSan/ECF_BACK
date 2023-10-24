@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product;
 use App\Models\Dimension;
 
 class DimensionController extends Controller
@@ -38,7 +37,7 @@ class DimensionController extends Controller
     public function show(string $id)
     {
         $dimension = Dimension::findOrFail($id);
-        $product = $dimension->product;
+        $product = $dimension->product()->with('dimensions')->get();
         return $product;
     }
 

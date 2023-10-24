@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Htpp\Controllers\DimensionController;
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,11 +16,11 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::resource('/products', ProductController::class);
-// Route::patch('/products/editedprice/{id}', [ProductController::class, 'update']);
-// Route::delete('/products/deletedproduct/{id}', [ProductController::class, 'destroy']);
-Route::get('/products/{id}/dimensions', [ProductController::class, 'show']);
+Route::put('/products/editedproduct/{id}', [ProductController::class, 'update']);
+Route::delete('/products/deletedproduct/{id}', [ProductController::class, 'destroy']);
+Route::get('/products/dimensions/{id}', [ProductController::class, 'show']);
+Route::get('/dimensions/{id}', [DimensionController::class, 'show']);
+
