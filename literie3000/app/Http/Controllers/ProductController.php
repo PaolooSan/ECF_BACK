@@ -61,7 +61,7 @@ class ProductController extends Controller
         $product = new Product ($request->all());
         $product->save();
 
-        return redirect()->route('products.show');
+        return redirect()->route('products.index')->with('success', 'Product created successfully');
 
 
     }
