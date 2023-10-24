@@ -1,10 +1,34 @@
 @extends('layout')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-12"></div>
-            <a class="btn btn-primary btn-lg" href="{{ route('products.create') }}" role="button">Ajouter un produit</a>
-        </div>
+    <div class="text-center">
+        <h1>Liste des produits</h1>
     </div>
+
+    <table class="table table-striped mx-auto">
+        <thead>
+            <tr>
+                <th>Marque</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($products as $product)
+                <tr>
+                    <td>{{ $product->brand }}</td>
+                    <td>{{ $product->name }}</td>
+                    <td>{{ $product->price }}</td>
+                    <td>
+                        <form action="{{ route('products.destroy', ['id' => $product->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 @endsection

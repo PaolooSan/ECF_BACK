@@ -19,8 +19,8 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, 'index']);
 
 Route::resource('/products', ProductController::class);
-Route::put('/products/editedproduct/{id}', [ProductController::class, 'update']);
-Route::delete('/products/deletedproduct/{id}', [ProductController::class, 'destroy']);
-Route::get('/products/dimensions/{id}', [ProductController::class, 'show']);
-Route::get('/dimensions/{id}', [DimensionController::class, 'show']);
+Route::put('/products/edit/{id}', [ProductController::class, 'update'])->name('products.update');
+Route::delete('/products/delete/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+// Route::get('/products/dimensions/{id}', [ProductController::class, 'show']);
+// Route::get('/dimensions/{id}', [DimensionController::class, 'show']);
 

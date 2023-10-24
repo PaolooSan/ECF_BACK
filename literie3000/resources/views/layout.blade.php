@@ -29,7 +29,10 @@
                         <a class="nav-link" href="/">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('products.create') }}">Produits</a>
+                        <a class="nav-link" href="{{ route('products.index') }}">Liste produits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('products.create') }}">Ajouter produits</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Panier</a>
